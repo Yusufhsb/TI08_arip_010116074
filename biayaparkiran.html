@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Biaya Parkir</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 50px auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Kalkulator Biaya Parkir</h2>
+
+      <form id="parkirForm">
+        <label for="jamMasuk">Jam Masuk (24 Jam):</label>
+        <input
+          type="text"
+          id="jamMasuk"
+          name="jamMasuk"
+          placeholder="HH:MM"
+          required
+        />
+        <br />
+
+        <label for="jamKeluar">Jam Keluar (24 Jam):</label>
+        <input
+          type="text"
+          id="jamKeluar"
+          name="jamKeluar"
+          placeholder="HH:MM"
+          required
+        />
+        <br />
+
+        <button type="button" onclick="hitungBiayaParkir()">
+          Hitung Biaya
+        </button>
+      </form>
+
+      <h3>Hasil Perhitungan Biaya Parkir:</h3>
+      <p id="biayaParkir"></p>
+    </div>
+
+    <script>
+      function hitungBiayaParkir() {
+        // Ambil nilai jam masuk dan jam keluar dari input
+        var jamMasuk = document.getElementById("jamMasuk").value;
+        var jamKeluar = document.getElementById("jamKeluar").value;
+
+        // Pisahkan jam dan menit masuk
+        var masukSplit = jamMasuk.split(":");
+        var jamMasukInt = parseInt(masukSplit[0]);
+        var menitMasukInt = parseInt(masukSplit[1]);
+
+        // Pisahkan jam dan menit keluar
+        var keluarSplit = jamKeluar.split(":");
+        var jamKeluarInt = parseInt(keluarSplit[0]);
+        var menitKeluarInt = parseInt(keluarSplit[1]);
+
+        // Hitung selisih waktu dalam menit
+        var selisihMenit =
+          (jamKeluarInt - jamMasukInt) * 60 + (menitKeluarInt - menitMasukInt);
+
+        // Harga per jam parkir (contoh: Rp 5000 per jam)
+        var hargaPerJam = 5000;
+
+        // Hitung biaya parkir
+        var biayaParkir = Math.ceil(selisihMenit / 60) * hargaPerJam;
+
+        // Tampilkan hasil
+        document.getElementById("biayaParkir").innerHTML =
+          "Biaya Parkir: Rp " + biayaParkir;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menampilkan Gambar</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 50px auto;
+      }
+
+      #selectedImage {
+        max-width: 300px;
+        max-height: 300px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Pilih Gambar</h2>
+
+      <form id="imageForm">
+        <label for="imageSelect">Pilih Gambar:</label>
+        <select
+          id="imageSelect"
+          name="imageSelect"
+          onchange="showSelectedImage()"
+        >
+          <option value="">Pilih gambar</option>
+          <option value="image1">Gambar 1</option>
+          <option value="image2">Gambar 2</option>
+          <option value="image3">Gambar 3</option>
+          <option value="image4">Gambar 4</option>
+          <option value="image5">Gambar 5</option>
+          <!-- Tambahkan lebih banyak gambar sesuai kebutuhan -->
+        </select>
+      </form>
+
+      <img id="selectedImage" src="" alt="Selected Image" />
+
+      <div id="imageInfo" style="display: none">
+        <h3>Informasi Gambar:</h3>
+        <p id="imageName"></p>
+      </div>
+    </div>
+
+    <script>
+      function showSelectedImage() {
+        var selectElement = document.getElementById("imageSelect");
+        var selectedValue = selectElement.value;
+
+        // Mendapatkan elemen gambar dan informasi
+        var selectedImageElement = document.getElementById("selectedImage");
+        var imageInfoElement = document.getElementById("imageInfo");
+        var imageNameElement = document.getElementById("imageName");
+
+        // Mendapatkan nama file gambar dari nilai dropdown
+        var imageName = "";
+        switch (selectedValue) {
+          case "image1":
+            imageName = "mongky.webp";
+            break;
+          case "image2":
+            imageName = "singa.webp";
+            break;
+          case "image3":
+            imageName = "panda.webp";
+            break;
+          case "image4":
+            imageName = "zebra.webp";
+            break;
+          case "image5":
+            imageName = "lop.webp";
+            break;
+          // Tambahkan lebih banyak gambar sesuai kebutuhan
+        }
+
+        // Menetapkan sumber gambar dan menampilkan informasi
+        selectedImageElement.src = imageName;
+        imageInfoElement.style.display = "block";
+        imageNameElement.innerHTML = "Nama File: " + imageName;
+      }
+    </script>
+  </body>
+</html>

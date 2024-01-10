@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbox Sederhana</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      #chatContainer {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        max-width: 300px;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+      }
+
+      #chatMessages {
+        max-height: 200px;
+        overflow-y: auto;
+        padding: 10px;
+      }
+
+      #messageInput {
+        width: calc(100% - 20px);
+        padding: 5px;
+        margin: 0;
+        border: none;
+        border-top: 1px solid #ccc;
+        resize: none;
+      }
+
+      #sendButton {
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      #sendButton:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chatContainer">
+      <div id="chatMessages"></div>
+      <textarea id="messageInput" placeholder="Tulis pesan..."></textarea>
+      <button id="sendButton" onclick="sendMessage()">Kirim</button>
+    </div>
+
+    <script>
+      function sendMessage() {
+        var messageInput = document.getElementById("messageInput");
+        var chatMessages = document.getElementById("chatMessages");
+
+        var message = messageInput.value;
+        if (message.trim() !== "") {
+          var newMessage = document.createElement("p");
+          newMessage.textContent = message;
+          chatMessages.appendChild(newMessage);
+
+          // Reset input setelah mengirim pesan
+          messageInput.value = "";
+
+          // Auto-scroll ke bawah
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+      }
+    </script>
+  </body>
+</html>

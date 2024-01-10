@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Konversi Mata Uang</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Konversi Mata Uang</h2>
+
+      <form id="conversionForm">
+        <label for="foreignCurrency">Pilih Mata Uang:</label>
+        <select id="foreignCurrency" name="foreignCurrency">
+          <option value="usd">USD - Dolar Amerika</option>
+          <option value="eur">EUR - Euro</option>
+          <option value="gbp">GBP - Poundsterling Inggris</option>
+          <!-- Tambahkan mata uang lain sesuai kebutuhan -->
+        </select>
+        <br />
+
+        <label for="foreignAmount">Masukkan Nilai Mata Uang Asing:</label>
+        <input type="number" id="foreignAmount" name="foreignAmount" required />
+        <br />
+
+        <button type="button" onclick="convertCurrency()">Konversi</button>
+      </form>
+
+      <h3>Hasil Konversi ke Rupiah:</h3>
+      <p id="result"></p>
+    </div>
+
+    <script>
+      function convertCurrency() {
+        var foreignCurrencySelect = document.getElementById("foreignCurrency");
+        var selectedCurrency = foreignCurrencySelect.value;
+
+        var foreignAmountInput = document.getElementById("foreignAmount");
+        var foreignAmount = parseFloat(foreignAmountInput.value);
+
+        // Nilai tukar mata uang asing terhadap Rupiah
+        var exchangeRates = {
+          usd: 14000, // Gantilah dengan nilai tukar yang sesuai
+          eur: 16000, // Gantilah dengan nilai tukar yang sesuai
+          gbp: 18000, // Gantilah dengan nilai tukar yang sesuai
+          // Tambahkan mata uang lain sesuai kebutuhan
+        };
+
+        // Hitung nilai dalam Rupiah
+        var rupiahValue = foreignAmount * exchangeRates[selectedCurrency];
+
+        // Tampilkan hasil
+        document.getElementById("result").innerHTML =
+          "Nilai dalam Rupiah: Rp " + rupiahValue.toFixed(2);
+      }
+    </script>
+  </body>
+</html>
