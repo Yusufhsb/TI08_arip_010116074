@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 100%;
+        display: flex;
+      }
+      nav {
+        width: 20%;
+        background-color: aqua;
+        height: 100vh;
+      }
+      .content {
+        width: 80%;
+        height: 100vh;
+      }
+      header,
+      footer {
+        width: 100%;
+        background-color: bisque;
+        height: 10vh;
+      }
+      main {
+        height: 80vh;
+        display: flex;
+      }
+      article {
+        width: 80%;
+        background-color: grey;
+      }
+      aside {
+        width: 20%;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav>nav</nav>
+      <div class="content">
+        <header>header</header>
+        <main>
+          <article>article</article>
+          <aside>aside</aside>
+        </main>
+        <footer>footer</footer>
+      </div>
+    </div>
+  </body>
+</html>
